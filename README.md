@@ -1,8 +1,4 @@
-# Eureka
-
-Eureka is a container repository for its related projects.
-
-## Projects
+# Projects
 
 | Project | Description | README |
 | --- | --- | --- |
