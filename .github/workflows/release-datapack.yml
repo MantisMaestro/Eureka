@@ -1,0 +1,35 @@
+name: Release Datapack
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    name: Package and release EurekaUtils
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Package datapack
+        working-directory: Datapack/EurekaUtils
+        run: zip -r "$GITHUB_WORKSPACE/EurekaUtils.zip" .
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EurekaUtils
+          path: EurekaUtils.zip
+          if-no-files-found: error
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: EurekaUtils.zip
