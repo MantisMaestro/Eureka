@@ -65,18 +65,10 @@ Distance selectors are measured from the command block/function execution locati
 | Purpose | Command block command | Placement / behavior |
 | --- | --- | --- |
 | Spawn welcome and game mode | `function eureka_utils:welcome` | Use at the spawn/onboarding trigger. The nearest non-Staff player is put into Adventure mode; the nearest Staff player is put into Creative mode. Nearby players receive the applicable message. |
-| Underage Staff notification | `function eureka_utils:notify_staff_underage` | Place at the bedrock-box trigger. Notifies all online `Staff` players about the nearest player within 40 blocks. |
-| Send underage player to jail | `function eureka_utils:teleport_jail` | Place immediately after the underage notification. Teleports the nearest player within 6 blocks to the configured jail destination. |
+| Underage notification and jail | `function eureka_utils:notify_staff_underage` | Place at the bedrock-box pressure-plate trigger. Notifies all online `Staff` players about the nearest player within 40 blocks, then teleports the nearest player within 6 blocks to the configured jail destination. |
 | Noobland Staff notification | `function eureka_utils:notify_staff_noobland` | Place at the Noobland trigger. Notifies all online `Staff` players about the nearest player within 50 blocks. |
 | Send player to Noobland | `function eureka_utils:teleport_noobland` | Place at the relevant teleport trigger. Teleports the nearest player within 5 blocks to the configured Noobland destination. |
 | Age-selection room | `function eureka_utils:teleport_age_selection` | Place at the reading/onboarding trigger. Tells the nearby player "Yay!! You can read!!", plays a chime, teleports them to the configured age-selection room, and emits particles there. |
-
-For the underage path, a typical pair of chained commands is:
-
-```mcfunction
-function eureka_utils:notify_staff_underage
-function eureka_utils:teleport_jail
-```
 
 ## Destination configuration
 
